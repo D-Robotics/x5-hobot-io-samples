@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Postinst start pwd is `pwd`"
+
+exit 0
