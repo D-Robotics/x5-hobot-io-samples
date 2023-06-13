@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
-
+import sys
+import signal
 import Hobot.GPIO as GPIO
 import time
+
+def signal_handler(signal, frame):
+    sys.exit(0)
 
 # Pin Definitions:
 led_pin_1 = 12
@@ -53,4 +57,5 @@ def main():
         GPIO.cleanup()  # cleanup all GPIOs
 
 if __name__ == '__main__':
+    signal.signal(signal.SIGINT, signal_handler)
     main()

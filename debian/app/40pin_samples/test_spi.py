@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 
 import sys
+import signal
 import os
 import time
 
 # 导入spidev模块
 import spidev
+
+def signal_handler(signal, frame):
+    sys.exit(0)
 
 def BytesToHex(Bytes):
     return ''.join(["0x%02X " % x for x in Bytes]).strip()
@@ -35,6 +39,7 @@ def spidevTest():
         spi.close()
 
 if __name__ == '__main__':
+    signal.signal(signal.SIGINT, signal_handler)
     print("List of enabled spi controllers:")
     os.system('ls /dev/spidev*')
 

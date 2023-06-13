@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
-
+import sys
+import signal
 import Hobot.GPIO as GPIO
 import time
 
+def signal_handler(signal, frame):
+    sys.exit(0)
+
 # 支持PWM的管脚: 32 and 33, 在使用PWM时，必须确保该管脚没有被其他功能占用
 output_pin = 33
+
+GPIO.setwarnings(False)
 
 def main():
     # Pin Setup:
@@ -33,4 +39,5 @@ def main():
         GPIO.cleanup()
 
 if __name__ == '__main__':
+    signal.signal(signal.SIGINT, signal_handler)
     main()

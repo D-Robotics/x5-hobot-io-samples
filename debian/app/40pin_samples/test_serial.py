@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 
 import sys
+import signal
 import os
 import time
 
 # 导入python串口库
 import serial
 import serial.tools.list_ports
+
+def signal_handler(signal, frame):
+    sys.exit(0)
 
 def serialTest():
     print("List of enabled UART:")
@@ -38,6 +42,7 @@ def serialTest():
 
 
 if __name__ == '__main__':
+    signal.signal(signal.SIGINT, signal_handler)
     if serialTest() != 0:
         print("Serial test failed!")
     else:

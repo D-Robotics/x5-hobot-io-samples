@@ -3,7 +3,6 @@
 from __future__ import print_function
 import sys
 import time
-
 import Hobot.GPIO as GPIO
 
 # 获取所有可以控制的管脚 BOARD 编号

@@ -1,11 +1,18 @@
 #!/usr/bin/env python3
 
 import sys
+import signal
 import os
 import time
 
 # 导入i2cdev
 from i2cdev import I2C
+
+def signal_handler(signal, frame):
+    sys.exit(0)
+
+def signal_handler(signal, frame):
+    sys.exit(0)
 
 def i2cdevTest():
     # device, bus = 0x51, 0
@@ -20,6 +27,7 @@ def i2cdevTest():
     i2c.close()
 
 if __name__ == '__main__':
+    signal.signal(signal.SIGINT, signal_handler)
     print("Starting demo now! Press CTRL+C to exit")
     print("List of enabled I2C controllers:")
     os.system('ls /dev/i2c*')

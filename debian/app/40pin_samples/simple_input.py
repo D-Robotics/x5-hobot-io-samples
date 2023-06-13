@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
-
+import sys
+import signal
 import Hobot.GPIO as GPIO
 import time
 
+def signal_handler(signal, frame):
+    sys.exit(0)
+
 # 定义使用的GPIO通道为38
 input_pin = 38 # BOARD 编码 38 
+
+GPIO.setwarnings(False)
 
 def main():
     prev_value = None
@@ -32,4 +38,5 @@ def main():
         GPIO.cleanup()
 
 if __name__=='__main__':
+    signal.signal(signal.SIGINT, signal_handler)
     main()

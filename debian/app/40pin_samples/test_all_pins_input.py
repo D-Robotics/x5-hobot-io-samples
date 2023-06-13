@@ -2,8 +2,13 @@
 
 from __future__ import print_function
 import sys
-
+import signal
 import Hobot.GPIO as GPIO
+
+def signal_handler(signal, frame):
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
 
 # 获取所有可以控制的管脚 BOARD 编号
 all_pins = list(GPIO.all_pin_data['BOARD'].keys())
