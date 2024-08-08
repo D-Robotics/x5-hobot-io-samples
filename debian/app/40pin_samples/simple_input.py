@@ -7,8 +7,8 @@ import time
 def signal_handler(signal, frame):
     sys.exit(0)
 
-# 定义使用的GPIO通道为38
-input_pin = 38 # BOARD 编码 38 
+# 定义使用的GPIO通道为37
+input_pin = 37 # BOARD 编码 37 
 
 GPIO.setwarnings(False)
 
