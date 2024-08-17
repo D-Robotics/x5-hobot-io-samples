@@ -11,9 +11,6 @@ from i2cdev import I2C
 def signal_handler(signal, frame):
     sys.exit(0)
 
-def signal_handler(signal, frame):
-    sys.exit(0)
-
 def i2cdevTest():
     # device, bus = 0x51, 0
     bus = input("Please input I2C BUS num:")
