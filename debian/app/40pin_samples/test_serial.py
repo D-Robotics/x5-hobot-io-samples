@@ -31,9 +31,9 @@ def signal_handler(signal, frame):
 def serialTest():
     print("List of enabled UART:")
     os.system('ls /dev/tty[a-zA-Z]*')
-    uart_dev= input("请输出需要测试的串口设备名:")
+    uart_dev= input("Please enter the name of the serial device to be tested:")
 
-    baudrate = input("请输入波特率(9600,19200,38400,57600,115200,921600):")
+    baudrate = input("Please enter the baud rate(9600,19200,38400,57600,115200,921600):")
     try:
         ser = serial.Serial(uart_dev, int(baudrate), timeout=1) # 1s timeout
     except Exception as e:
