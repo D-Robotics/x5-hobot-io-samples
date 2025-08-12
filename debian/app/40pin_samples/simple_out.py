@@ -27,6 +27,8 @@ def signal_handler(signal, frame):
 # 定义使用的GPIO通道为37
 output_pin = 37 # BOARD 编码 37
 
+GPIO.setwarnings(False)
+
 def main():
     # 设置管脚编码模式为硬件编号 BOARD
     GPIO.setmode(GPIO.BOARD)
